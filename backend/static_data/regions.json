@@ -1,0 +1,86 @@
+{
+  "tashkent_city": {
+    "name_en": "Tashkent",
+    "name_uz": "Toshkent shahri",
+    "name_uz_cyr": "Тошкент шаҳри",
+    "name_ru": "Ташкент"
+  },
+  "tashkent_region": {
+    "name_en": "Tashkent Region",
+    "name_uz": "Toshkent viloyati",
+    "name_uz_cyr": "Тошкент вилояти",
+    "name_ru": "Ташкентская область"
+  },
+  "andijan": {
+    "name_en": "Andijan",
+    "name_uz": "Andijon viloyati",
+    "name_uz_cyr": "Андижон вилояти",
+    "name_ru": "Андижанская область"
+  },
+  "bukhara": {
+    "name_en": "Bukhara",
+    "name_uz": "Buxoro viloyati",
+    "name_uz_cyr": "Бухоро вилояти",
+    "name_ru": "Бухарская область"
+  },
+  "jizzakh": {
+    "name_en": "Jizzakh",
+    "name_uz": "Jizzax viloyati",
+    "name_uz_cyr": "Жиззах вилояти",
+    "name_ru": "Джизакская область"
+  },
+  "kashkadarya": {
+    "name_en": "Kashkadarya",
+    "name_uz": "Qashqadaryo viloyati",
+    "name_uz_cyr": "Қашқадарё вилояти",
+    "name_ru": "Кашкадарьинская область"
+  },
+  "navoi": {
+    "name_en": "Navoi",
+    "name_uz": "Navoiy viloyati",
+    "name_uz_cyr": "Навоий вилояти",
+    "name_ru": "Навоийская область"
+  },
+  "namangan": {
+    "name_en": "Namangan",
+    "name_uz": "Namangan viloyati",
+    "name_uz_cyr": "Наманган вилояти",
+    "name_ru": "Наманганская область"
+  },
+  "samarkand": {
+    "name_en": "Samarkand",
+    "name_uz": "Samarqand viloyati",
+    "name_uz_cyr": "Самарқанд вилояти",
+    "name_ru": "Самаркандская область"
+  },
+  "surkhandarya": {
+    "name_en": "Surkhandarya",
+    "name_uz": "Surxondaryo viloyati",
+    "name_uz_cyr": "Сурхондарё вилояти",
+    "name_ru": "Сурхандарьинская область"
+  },
+  "syrdarya": {
+    "name_en": "Syrdarya",
+    "name_uz": "Sirdaryo viloyati",
+    "name_uz_cyr": "Сирдарё вилояти",
+    "name_ru": "Сырдарьинская область"
+  },
+  "fergana": {
+    "name_en": "Fergana",
+    "name_uz": "Farg'ona viloyati",
+    "name_uz_cyr": "Фарғона вилояти",
+    "name_ru": "Ферганская область"
+  },
+  "khorezm": {
+    "name_en": "Khorezm",
+    "name_uz": "Xorazm viloyati",
+    "name_uz_cyr": "Хоразм вилояти",
+    "name_ru": "Хорезмская область"
+  },
+  "karakalpakstan": {
+    "name_en": "Karakalpakstan",
+    "name_uz": "Qoraqalpog'iston Respublikasi",
+    "name_uz_cyr": "Қорақалпоғистон Республикаси",
+    "name_ru": "Республика Каракалпакстан"
+  }
+}

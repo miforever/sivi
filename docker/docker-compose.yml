@@ -1,0 +1,144 @@
+services:
+  # ---------------------------------------------------------------------------
+  # Backend
+  # ---------------------------------------------------------------------------
+  db:
+    image: pgvector/pgvector:pg16
+    env_file: ../backend/.env
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-postgres} -d ${POSTGRES_DB:-postgres}"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  api:
+    build: ../backend
+    env_file: ../backend/.env
+    environment:
+      DJANGO_SETTINGS_MODULE: config.settings.dev
+      DB_HOST: db
+      REDIS_URL: redis://redis:6379/2
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  celery:
+    build: ../backend
+    env_file: ../backend/.env
+    entrypoint: []
+    command: celery -A config.celery worker -l info
+    environment:
+      DJANGO_SETTINGS_MODULE: config.settings.dev
+      DB_HOST: db
+      REDIS_URL: redis://redis:6379/2
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  celery-beat:
+    build: ../backend
+    env_file: ../backend/.env
+    entrypoint: []
+    command: celery -A config.celery beat -l info
+    environment:
+      DJANGO_SETTINGS_MODULE: config.settings.dev
+      DB_HOST: db
+      REDIS_URL: redis://redis:6379/2
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  # ---------------------------------------------------------------------------
+  # Telegram Bot
+  # ---------------------------------------------------------------------------
+  telegram-bot:
+    build: ../telegram-bot
+    env_file: ../telegram-bot/.env
+    depends_on:
+      redis:
+        condition: service_healthy
+
+  # ---------------------------------------------------------------------------
+  # Frontend
+  # ---------------------------------------------------------------------------
+  landing:
+    build: ../frontend/landing
+    environment:
+      - NODE_ENV=production
+
+  admin:
+    build:
+      context: ../frontend/admin
+      args:
+        NEXT_PUBLIC_API_URL: https://api.sivi.uz/api/v1
+
+  # ---------------------------------------------------------------------------
+  # Nginx
+  # ---------------------------------------------------------------------------
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/sivi.uz.conf:/etc/nginx/conf.d/sivi.uz.conf:ro
+      - ./nginx/admin.sivi.uz.conf:/etc/nginx/conf.d/admin.sivi.uz.conf:ro
+      - ./nginx/api.sivi.uz.conf:/etc/nginx/conf.d/api.sivi.uz.conf:ro
+      - ./nginx/bot.sivi.uz.conf:/etc/nginx/conf.d/bot.sivi.uz.conf:ro
+    depends_on:
+      - landing
+      - admin
+
+  # ---------------------------------------------------------------------------
+  # SSL
+  # ---------------------------------------------------------------------------
+  certbot:
+    image: certbot/certbot
+    volumes:
+      - ./certbot/conf:/etc/letsencrypt
+      - ./certbot/www:/var/www/certbot
+
+  # ---------------------------------------------------------------------------
+  # DB Backups — daily pg_dump, keeps last 7 days
+  # ---------------------------------------------------------------------------
+  db-backup:
+    image: pgvector/pgvector:pg16
+    env_file: ../backend/.env
+    volumes:
+      - ./backups:/backups
+    entrypoint: >
+      sh -c '
+        while true; do
+          FILE=/backups/sivi-$$(date +%%Y%%m%%d-%%H%%M).sql.gz;
+          echo "Creating backup: $$FILE";
+          PGPASSWORD=$$POSTGRES_PASSWORD pg_dump -h db -U $$POSTGRES_USER $$POSTGRES_DB | gzip > $$FILE && echo "Backup complete";
+          find /backups -name "sivi-*.sql.gz" -mtime +7 -delete;
+          sleep 86400;
+        done
+      '
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  postgres_data:
+  redis_data:

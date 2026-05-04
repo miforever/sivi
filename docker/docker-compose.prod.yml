@@ -1,0 +1,74 @@
+services:
+  # ---------------------------------------------------------------------------
+  # Backend
+  # ---------------------------------------------------------------------------
+  db:
+    restart: always
+
+  redis:
+    restart: always
+    command: redis-server --appendonly yes --maxmemory 512mb --maxmemory-policy allkeys-lru
+
+  api:
+    command: gunicorn config.wsgi:application --bind 0.0.0.0:8000 --workers 4
+    environment:
+      DJANGO_SETTINGS_MODULE: config.settings.prod
+    restart: always
+
+  celery:
+    command: celery -A config.celery worker -l warning --concurrency 4
+    environment:
+      DJANGO_SETTINGS_MODULE: config.settings.prod
+    restart: always
+
+  celery-beat:
+    command: celery -A config.celery beat -l info
+    environment:
+      DJANGO_SETTINGS_MODULE: config.settings.prod
+    restart: always
+
+  # ---------------------------------------------------------------------------
+  # Telegram Bot
+  # ---------------------------------------------------------------------------
+  telegram-bot:
+    environment:
+      DEBUG: "false"
+      LOG_LEVEL: WARNING
+    deploy:
+      resources:
+        limits:
+          cpus: "1.0"
+          memory: 512M
+    restart: always
+
+  # ---------------------------------------------------------------------------
+  # Frontend
+  # ---------------------------------------------------------------------------
+  landing:
+    restart: always
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 512M
+
+  admin:
+    restart: always
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 512M
+
+  # ---------------------------------------------------------------------------
+  # Nginx + SSL
+  # ---------------------------------------------------------------------------
+  nginx:
+    volumes:
+      - ./certbot/conf:/etc/letsencrypt:ro
+      - ./certbot/www:/var/www/certbot:ro
+    restart: always
+
+  certbot:
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+    restart: unless-stopped

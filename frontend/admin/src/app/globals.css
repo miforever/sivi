@@ -1,0 +1,121 @@
+@import "tailwindcss";
+
+/* Base theme variables (dark mode defaults) */
+:root {
+  --fg: #F8FAFC;
+  --fg-secondary: rgba(248, 250, 252, 0.6);
+  --fg-muted: rgba(248, 250, 252, 0.4);
+  --fg-faint: rgba(248, 250, 252, 0.3);
+  --fg-icon: rgba(248, 250, 252, 0.2);
+
+  --surface-dark: #1A0B2E;
+  --surface-darker: #0F0720;
+  --surface-medium: #2D1B69;
+  --surface-card: #1E1245;
+  --surface-hover: #251858;
+
+  --sidebar-bg: #130A24;
+  --sidebar-hover: #1E1245;
+  --sidebar-active: #2D1B69;
+
+  --edge: rgba(255, 255, 255, 0.08);
+  --edge-strong: rgba(255, 255, 255, 0.1);
+
+  --overlay: rgba(255, 255, 255, 0.05);
+  --overlay-hover: rgba(255, 255, 255, 0.1);
+  --overlay-active: rgba(255, 255, 255, 0.15);
+
+  --chart-text: rgba(255, 255, 255, 0.3);
+  --chart-text-strong: rgba(255, 255, 255, 0.5);
+  --chart-tooltip-bg: #1E1245;
+  --chart-tooltip-border: rgba(255, 255, 255, 0.1);
+  --chart-tooltip-color: #fff;
+}
+
+/* Light mode overrides */
+html.light {
+  --fg: #0F172A;
+  --fg-secondary: #475569;
+  --fg-muted: #64748B;
+  --fg-faint: #94A3B8;
+  --fg-icon: #CBD5E1;
+
+  --surface-dark: #E2E8F0;
+  --surface-darker: #F1F5F9;
+  --surface-medium: #CBD5E1;
+  --surface-card: #FFFFFF;
+  --surface-hover: #E2E8F0;
+
+  --sidebar-bg: #F8FAFC;
+  --sidebar-hover: #E2E8F0;
+  --sidebar-active: #CBD5E1;
+
+  --edge: #E2E8F0;
+  --edge-strong: #CBD5E1;
+
+  --overlay: rgba(15, 23, 42, 0.05);
+  --overlay-hover: rgba(15, 23, 42, 0.08);
+  --overlay-active: rgba(15, 23, 42, 0.12);
+
+  --chart-text: rgba(15, 23, 42, 0.4);
+  --chart-text-strong: rgba(15, 23, 42, 0.6);
+  --chart-tooltip-bg: #FFFFFF;
+  --chart-tooltip-border: #E2E8F0;
+  --chart-tooltip-color: #0F172A;
+}
+
+/* Register as Tailwind theme tokens via var() so utilities are dynamic */
+@theme inline {
+  --color-brand-400: #F472B6;
+  --color-brand-500: #EC4899;
+  --color-brand-600: #DB2777;
+  --color-purple-500: #A855F7;
+
+  --color-surface-dark: var(--surface-dark);
+  --color-surface-darker: var(--surface-darker);
+  --color-surface-medium: var(--surface-medium);
+  --color-surface-card: var(--surface-card);
+  --color-surface-hover: var(--surface-hover);
+
+  --color-sidebar-bg: var(--sidebar-bg);
+  --color-sidebar-hover: var(--sidebar-hover);
+  --color-sidebar-active: var(--sidebar-active);
+
+  --color-fg: var(--fg);
+  --color-fg-secondary: var(--fg-secondary);
+  --color-fg-muted: var(--fg-muted);
+  --color-fg-faint: var(--fg-faint);
+  --color-fg-icon: var(--fg-icon);
+
+  --color-edge: var(--edge);
+  --color-edge-strong: var(--edge-strong);
+
+  --color-overlay: var(--overlay);
+  --color-overlay-hover: var(--overlay-hover);
+  --color-overlay-active: var(--overlay-active);
+
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background: var(--surface-darker);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(236, 72, 153, 0.2);
+  border-radius: 3px;
+}

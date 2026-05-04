@@ -1,0 +1,58 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: sivi\n"
+"PO-Revision-Date: 2026-01-02 00:00+0000\n"
+"Last-Translator: Translation Bot <bot@example.com>\n"
+"Language-Team: Russian\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/apps/resumes/services/resume/pdf.py
+msgid "Professional Summary"
+msgstr "Профессиональное резюме"
+
+#: src/apps/resumes/services/resume/pdf.py
+msgid "Professional Experience"
+msgstr "Опыт работы"
+
+#: src/apps/resumes/services/resume/pdf.py
+msgid "Education"
+msgstr "Образование"
+
+#: src/apps/resumes/services/resume/pdf.py
+msgid "Projects"
+msgstr "Проекты"
+
+#: src/apps/resumes/services/resume/pdf.py
+msgid "Volunteer Experience"
+msgstr "Волонтёрская деятельность"
+
+#: src/apps/resumes/services/resume/pdf.py
+msgid "Technical Skills"
+msgstr "Технические навыки"
+
+#: src/apps/resumes/services/resume/pdf.py
+msgid "Certifications"
+msgstr "Сертификаты"
+
+#: src/apps/resumes/services/resume/pdf.py
+msgid "Skills"
+msgstr "Навыки"
+
+#: src/apps/resumes/services/resume/pdf.py
+msgid "URL"
+msgstr "Ссылка"
+
+#: src/apps/resumes/services/resume/pdf.py
+msgid "Present"
+msgstr "по настоящее время"
+
+#: src/apps/resumes/services/resume/pdf.py
+msgid "Role"
+msgstr "Роль"
+
+#: src/apps/resumes/services/resume/pdf.py
+msgid "Cause"
+msgstr "Направление"

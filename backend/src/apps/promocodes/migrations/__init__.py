@@ -1,0 +1,1 @@
+"""Promocodes migrations initialization."""

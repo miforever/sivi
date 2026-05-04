@@ -1,0 +1,1 @@
+"""Vacancies app tests package."""

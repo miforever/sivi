@@ -1,0 +1,54 @@
+# Git
+.git
+.github
+.gitignore
+
+# Dependencies (each service installs its own)
+node_modules
+__pycache__
+*.pyc
+.venv
+venv
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env files
+.env
+.env.*
+backend/.envs/
+
+# Build artifacts
+.next
+dist
+build
+*.egg-info
+staticfiles
+
+# Dev/test
+tests/
+*.test.*
+coverage.xml
+.coverage
+.pytest_cache
+.ruff_cache
+.mypy_cache
+
+# Docs
+docs/
+*.md
+!README.md
+
+# Docker meta (avoid recursive copy)
+docker/certbot/
+
+# Misc
+logo/
+.claude/

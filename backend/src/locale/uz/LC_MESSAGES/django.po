@@ -1,0 +1,58 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: sivi\n"
+"PO-Revision-Date: 2026-01-02 00:00+0000\n"
+"Last-Translator: Translation Bot <bot@example.com>\n"
+"Language-Team: Uzbek\n"
+"Language: uz\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/apps/resumes/services/resume/pdf.py
+msgid "Professional Summary"
+msgstr "Kasbiy xulosa"
+
+#: src/apps/resumes/services/resume/pdf.py
+msgid "Professional Experience"
+msgstr "Ish tajribasi"
+
+#: src/apps/resumes/services/resume/pdf.py
+msgid "Education"
+msgstr "Ta'lim"
+
+#: src/apps/resumes/services/resume/pdf.py
+msgid "Projects"
+msgstr "Loyihalar"
+
+#: src/apps/resumes/services/resume/pdf.py
+msgid "Volunteer Experience"
+msgstr "Ko'ngilli faoliyat"
+
+#: src/apps/resumes/services/resume/pdf.py
+msgid "Technical Skills"
+msgstr "Texnik ko'nikmalar"
+
+#: src/apps/resumes/services/resume/pdf.py
+msgid "Certifications"
+msgstr "Sertifikatlar"
+
+#: src/apps/resumes/services/resume/pdf.py
+msgid "Skills"
+msgstr "Ko'nikmalar"
+
+#: src/apps/resumes/services/resume/pdf.py
+msgid "URL"
+msgstr "Havola"
+
+#: src/apps/resumes/services/resume/pdf.py
+msgid "Present"
+msgstr "Hozirgi vaqtda"
+
+#: src/apps/resumes/services/resume/pdf.py
+msgid "Role"
+msgstr "Lavozim"
+
+#: src/apps/resumes/services/resume/pdf.py
+msgid "Cause"
+msgstr "Yo'nalish"
